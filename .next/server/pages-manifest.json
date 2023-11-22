@@ -1,0 +1,23 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/api/hello": "pages/api/hello.js",
+  "/_error": "pages/_error.js",
+  "/api/login": "pages/api/login.js",
+  "/api/ride": "pages/api/ride.js",
+  "/api/nonce": "pages/api/nonce.js",
+  "/api/signup": "pages/api/signup.js",
+  "/api/verify": "pages/api/verify.js",
+  "/homepage/Loginbutton": "pages/homepage/Loginbutton.html",
+  "/homepage/Ourteam": "pages/homepage/Ourteam.html",
+  "/homepage/Signup": "pages/homepage/Signup.html",
+  "/homepage/about": "pages/homepage/about.html",
+  "/homepage/footer": "pages/homepage/footer.html",
+  "/homepage/herosection": "pages/homepage/herosection.html",
+  "/homepage": "pages/homepage.html",
+  "/": "pages/index.html",
+  "/homepage/navbar": "pages/homepage/navbar.html",
+  "/protected-route": "pages/protected-route.html",
+  "/signup": "pages/signup.html",
+  "/404": "pages/404.html"
+}
