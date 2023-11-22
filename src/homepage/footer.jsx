@@ -11,11 +11,13 @@ const Footer = () => {
     };
     return (
         <>
-            <footer className=' bg-primary d-flex flex-column justify-content-center' style={footerStyle}>
-                <div className='icons d-flex justify-content-center'>
-                <a><img className="img-fluid" src={FacebookIcon} alt="" /></a>
-                <a><img className="img-fluid m-2" src={InstaIcon} alt="" /></a>
-                <a><img className="img-fluid m-1" src={twitterIcon} alt="" /></a>
+        <hr />
+            <footer className=' bg-transparent d-flex flex-column justify-content-center' style={footerStyle}>
+                <div className='icons mb-3 d-flex justify-content-center'>
+                <i className="fa-brands fa-facebook fa-2xl"  style={{color: "#3c75d7",}} />
+                <i className="mx-3 fa-brands fa-instagram  fa-2xl" style={{color: "#fb139b",}} />
+                <i className="fa-brands fa-twitter  fa-2xl" style={{color: "#4b99ec",}} />
+              
                 </div>
                 <div className='content fw-semibold  text-center'>
                     <p className='m-0'>Ride . Share . Connect</p>
