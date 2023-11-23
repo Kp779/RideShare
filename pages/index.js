@@ -1,4 +1,5 @@
 // pages/index.js
+import React from "react";
 import Home from './homepage';
 import { ChakraProvider } from '@chakra-ui/react';
 
