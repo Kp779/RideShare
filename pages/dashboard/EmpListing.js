@@ -73,7 +73,11 @@ const EmpListing = () => {
                                         </td> */}
                                         <td>{item.route}</td>
                                         <td>{item.startTime}</td>
-                                        <td><a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a></td>
+                                        <td>
+                                            <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a>
+                                            <a onClick={() => { Removefunction(item.id) }} className="btn btn-danger">Remove</a>
+                                            <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a>
+                                        </td>
                                     </tr>
                                 ))
                             }
