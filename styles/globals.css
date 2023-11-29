@@ -16,7 +16,6 @@ a {
 * {
   box-sizing: border-box;
 }
-
 .app-container {
   display: flex;
   align-items: center;
@@ -24,27 +23,21 @@ a {
   height: 100vh;
 }
 
-.open-button {
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
 
 .popover {
   position: absolute;
   background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1em solid #ccc;
+  padding: 2em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 2;
   top: 50%;
   left: 50%;
+  min-width: 40vw;
   transform: translate(-50%, -50%);
 }
 
-.close-button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  font-size: 14px;
+.form-button {
   cursor: pointer;
+  margin: 0.6em;
 }
