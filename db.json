@@ -1,22 +1,12 @@
 {
-  "employee": [
+  "data": [
     {
-      "name": "kompal poorkar",
-      "start": "bhavarkua",
+      "name": "Kompal",
       "destination": "silicon city",
-      "LiscenceApproval": true,
-      "route": "a.b. road",
+      "start": "bhavarkua",
+      "route": "ab road",
       "startTime": "9 am",
       "id": 1
-    },
-    {
-      "name": "Harsh Patware",
-      "start": "vijay nagar",
-      "destination": "geeta bhavan",
-      "LiscenceApproval": true,
-      "route": "ab road",
-      "startTime": "12pm",
-      "id": 2
     }
   ]
 }
