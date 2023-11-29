@@ -1,7 +1,6 @@
 
 import withAuth from '@/utils/withAuth';
 import React from 'react';
-import Dashboard from './Dashboard';
 import App1 from './homepage/app1';
 function ProtectedRoute() {
   return (

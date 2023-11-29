@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 const apiUrl = 'http://localhost:8000/data';
 const App = () => {
   const [data, setData] = React.useState([]);
