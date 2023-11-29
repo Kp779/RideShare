@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import {ethers} from 'ethers';
 import React from "react";
 import Home from './homepage';
-import Dashboard from './Dashboard';
+
 
 function HomePage() {
   const [isMetamaskInstalled, setIsMetamaskInstalled] = useState(false);
@@ -98,7 +98,6 @@ function HomePage() {
 </div>
 </nav>
      <Home/>
-     <Dashboard/>
      </>
      
   );
