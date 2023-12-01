@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "name": "Koompal",
+      "destination": "silicon city",
+      "start": "bhavarkua",
+      "route": "ab road",
+      "startTime": "9 am",
+      "id": 1
+    },
+    {
+      "name": "harsh",
+      "destination": "vijay nagar",
+      "start": "silicon",
+      "route": "ab road",
+      "startTime": "8am",
+      "id": 2
+    },
+    {
+      "name": "divyansh",
+      "destination": "plasia",
+      "start": "medicaps",
+      "route": "ab road",
+      "startTime": "10 am",
+      "id": 3
+    },
+    {
+      "name": "harsh",
+      "destination": "medicaps",
+      "start": "vijay nagar",
+      "route": "ab road",
+      "startTime": "10am",
+      "id": 4
+    }
+  ]
+}
