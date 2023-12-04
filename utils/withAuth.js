@@ -6,7 +6,7 @@ const withAuth = (Component) => {
   const Auth = (props) => {
     const router = useRouter();
     const [resp, setResponse] = useState('Valid');
-
+   
     useEffect(() => {
       const checkMetamask = async () => {
         console.log("hello")
