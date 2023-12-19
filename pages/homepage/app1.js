@@ -1,174 +1,166 @@
-import React, { useState, useEffect } from 'react';
-const apiUrl = 'http://localhost:8000/data';
-
+import React, { useState, useEffect } from "react";
+// const apiUrl = 'http://localhost:8000/data';
+import axios from "axios";
 
 const App = () => {
-  const [data, setData] = React.useState([]);
-  const [newName, setNewName] = React.useState('');
-  const [newStart, setNewStart] = React.useState('');
-  const [newDestination, setNewDestination] = React.useState('');
-  const [newRoute, setNewRoute] = React.useState('');
-  const [newStartTime, setNewStartTime] = React.useState('');
-
+  const [employees, setEmployees] = useState([]);
+  const [newEmployee, setNewEmployee] = useState({
+    name: "",
+    start: "",
+    destination: "",
+    route: "",
+    startTime: "",
+  });
   const [isPopoverOpen, setPopoverOpen] = useState(false);
 
   const handleButtonClick = () => {
     setPopoverOpen(!isPopoverOpen);
   };
-  React.useEffect(() => {
-    fetchData();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/employees")
+      .then((response) => setEmployees(response.data));
   }, []);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(apiUrl);
-      const result = await response.json();
-      setData(result);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: newName, destination: newDestination, start: newStart, route: newRoute, startTime: newStartTime })
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+   
+    setNewEmployee((prevEmployee) => ({ ...prevEmployee, [name]: value }));
+  };
+
+  const handleAddEmployee = (event) => {
+    axios
+      .post("http://localhost:5000/api/employees", newEmployee)
+      .then((response) => {
+        setEmployees([...employees, response.data]);
+        setNewEmployee({
+          name: "",
+          start: "",
+          destination: "",
+          route: "",
+          startTime: "",
+        });
       });
-
-      if (response.ok) {
-        // If the post request is successful, fetch updated data
-        fetchData();
-        setNewName('');
-        setNewStart('');
-        setNewDestination('');
-        setNewRoute('');
-        setNewStartTime(''); // Clear the form input
-      } else {
-        console.error('Failed to post data');
-      }
-    } catch (error) {
-      console.error('Error posting data:', error);
-    }
-  };
-
-  return (
+      setPopoverOpen(!isPopoverOpen);
+    event.preventDefault();
     
-       <div className='d-flex flex-column align-items-center p-2 '> 
+  };
+  return (
+    <div className="d-flex flex-column align-items-center p-2 ">
       <div>
         <h2>RIDE - SHARE - CONNECT</h2>
-        <h4 className='text-center'>Find Your Ride</h4>
+        <h4 className="text-center">Find Your Ride</h4>
       </div>
       <div>
-        <button onClick={handleButtonClick} className="open-button btn btn-primary ">
+        <button
+          onClick={handleButtonClick}
+          className="open-button btn btn-primary "
+        >
           Create Ride
         </button>
         {isPopoverOpen && (
-          <div className="popover" >
+          <div className="popover">
             <div class="modal-header m-1 ">
-        <h5 class="modal-title fs-5" >CREATE NEW RIDE</h5>
-        <button type="button" class="btn-close"  aria-label="Close" onClick={handleButtonClick}></button>
-      </div>
-            <form className='' onSubmit={handleSubmit}>
-
-              <label className='form-label'>
-                Author Name
-              </label>
+              <h5 class="modal-title fs-5">CREATE NEW RIDE</h5>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="Close"
+                onClick={handleButtonClick}
+              ></button>
+            </div>
+            <form>
+              <label className="form-label">Author Name</label>
               <input
-              className='form-control'
+                className="form-control"
                 type="text"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
+                name="name"
+                value={newEmployee.name}
+                onChange={handleInputChange}
               />
-              <label className='form-label'>
-                Start
-              </label>
+              <label className="form-label">Start</label>
               <input
-               className='form-control'
+                className="form-control"
                 type="text"
-                value={newStart}
-                onChange={(e) => setNewStart(e.target.value)}
+                name="start"
+                value={newEmployee.start}
+                onChange={handleInputChange}
               />
-              <label className='form-label'>
-                Destination
-              </label>
+              <label className="form-label">destination</label>
               <input
-               className='form-control'
+                className="form-control"
                 type="text"
-                value={newDestination}
-                onChange={(e) => setNewDestination(e.target.value)}
+                name="destination"
+                value={newEmployee.destination}
+                onChange={handleInputChange}
               />
-              <label className='form-label'>
-                Route
-              </label>
+              <label className="form-label">route</label>
               <input
-               className='form-control'
+                className="form-control"
                 type="text"
-                value={newRoute}
-                onChange={(e) => setNewRoute(e.target.value)}
+                name="route"
+                value={newEmployee.route}
+                onChange={handleInputChange}
               />
-              <label className='form-label'>
-                Start Time 
-              </label>
+              <label className="form-label">startTime</label>
               <input
-               className='form-control'
+                className="form-control"
                 type="text"
-                value={newStartTime}
-                onChange={(e) => setNewStartTime(e.target.value)}
+                name="startTime"
+                value={newEmployee.startTime}
+                onChange={handleInputChange}
               />
-              <button type="submit" className=" btn btn-success form-button">Add Ride</button>
-              <button onClick={handleButtonClick} className="btn btn-secondary form-button">
+              <button
+                onClick={handleAddEmployee}
+                type="submit"
+                className=" btn btn-success form-button"
+              >
+                Add Ride
+              </button>
+              <button
+                onClick={handleButtonClick}
+                className="btn btn-secondary form-button"
+              >
                 Close
               </button>
             </form>
-
           </div>
         )}
       </div>
 
-      <div className='align-self-stretch m-4'>
-        <table className='table table-striped table-hover mt-2'>
+      <div className="align-self-stretch m-4">
+        <table className="table table-striped table-hover mt-2">
           <thead>
             <tr>
-              <th >ID</th>
-              <th >Author Name</th>
-              <th >Start</th>
-              <th >Destination</th>
-              <th >Route</th>
-              <th >Start Time</th>
-              <th >Request Ride</th>
+              <th>ID</th>
+              <th>Author Name</th>
+              <th>Start</th>
+              <th>Destination</th>
+              <th>Route</th>
+              <th>Start Time</th>
+              <th>Request Ride</th>
             </tr>
           </thead>
-          <tbody className='table-group-divider'>
-            {data.map((item) => (
-              <tr key={item.id}>
-                <td scope="row">{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.start}</td>
-                <td>{item.destination}</td>
-                <td>{item.route}</td>
-                <td>{item.startTime}</td>
-                <td><button className='btn btn-dark btn-sm '>Send</button></td>
+          <tbody className="table-group-divider">
+            {employees.map((employee) => (
+              <tr key={employee._id}>
+                <td scope="row">{employee.id}</td>
+                <td>{employee.name}</td>
+                <td>{employee.start}</td>
+                <td>{employee.destination}</td>
+                <td>{employee.route}</td>
+                <td>{employee.startTime}</td>
+                <td>
+                  <button className="btn btn-dark btn-sm ">Send</button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-
     </div>
-   
-   
   );
 };
 
 export default App;
-
-
-
-
-
-
